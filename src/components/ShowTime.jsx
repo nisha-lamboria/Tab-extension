@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 const ShowTime = () => {
   const [time,setTime]=useState("");
-  const [focus,setFocus]=useState("");
   const {userName}=useUserContext();
 
   useEffect(()=>{

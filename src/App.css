@@ -78,3 +78,11 @@
 .cross-focus.remove-focus{
     display:none;
 }
+
+.quotes-wrapper{
+    margin-top:3rem;
+    color:var(--white);
+    font-size:3rem;
+    font-weight:600;
+    text-align:center;
+}
