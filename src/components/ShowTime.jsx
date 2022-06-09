@@ -10,6 +10,7 @@ const ShowTime = () => {
     setTimeout(()=>{
       setTime(()=>date.toLocaleTimeString('en-US'));
     },1000)
+    // eslint-disable-next-line
   })
 
   return (
@@ -20,4 +21,4 @@ const ShowTime = () => {
   )
 }
 
-export {ShowTime};
+export {ShowTime}; 
