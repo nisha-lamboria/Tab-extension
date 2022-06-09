@@ -1,0 +1,80 @@
+@import url(utils.css);
+
+.App{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-image:url("https://source.unsplash.com/random/1920x1000?butterfly");
+    background-size:cover;
+    font-size:1.6rem;
+    position:relative;
+}
+
+.greetuser-wrapper{
+    display:flex;
+    flex-direction:column;
+    color:var(--white);
+}
+
+.greet-form{
+    display:flex;
+    flex-direction:column;
+    align-items:center; 
+    gap:1rem;
+}
+
+.greet-input{
+    border:2px solid var(--blackl1);
+    outline:var(--purple-main);
+    padding:1rem;
+    font-size:2rem;
+    font-weight:600;
+}
+
+.greet-form button{
+    color:var(--white);
+    border:none;
+    background:none;
+    padding:1rem 1.5rem;
+    background-color:var(--blackl1);
+    font-size:2rem;
+    font-weight:600;
+    cursor:pointer;
+    text-transform:uppercase;
+}
+
+.weather-wrapper{
+    position:fixed;
+    top:0;
+    right:0;
+    color:var(--white);
+    text-align:center;
+}
+
+.weather-wrapper span{
+    padding:0 5px;
+}
+
+.time-wrapper,.focus-wrapper{
+    display:flex;
+    flex-direction:column;
+    color:var(--white);
+    align-items:center;
+    font-size:2rem;
+    font-weight:600;
+}
+
+.cross-focus{
+    text-decoration:line-through;
+}
+
+.focus-actions{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.cross-focus.remove-focus{
+    display:none;
+}
