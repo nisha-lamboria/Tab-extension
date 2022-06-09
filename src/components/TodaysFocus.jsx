@@ -1,65 +1,70 @@
-import { useRef, useState } from "react";
+import {  useState } from "react";
 
 const TodaysFocus = () => {
-  const readFocus = () => {
-    let val;
-    if (val !== "" && val!==null) {
-      return JSON.parse(localStorage.getItem("focus"));
-    } else {
-      return "";
-    }
-  };
+  // const readFocus = () => {
+  //   let val;
+  //   if (val !== "" && val!==null) {
+  //     return JSON.parse(localStorage.getItem("focus"));
+  //   } else {
+  //     return "";
+  //   }
+  // };
 
-  const focusRef = useRef();
-  const [focusInput, setFocusInput] = useState(readFocus);
-  const [editFocus,setEditFocus]=useState(false||localStorage.getItem('editFocus'));
+  const [focusInput, setFocusInput] = useState(""||JSON.parse(localStorage.getItem("focus")));
   const [isFocus,setIsFocus]=useState(false||localStorage.getItem("isfocus"));
   const [isChecked, setIsChecked] = useState(
     false || localStorage.getItem("ischecked")
   );
   const focusInputHandler = (e) => {
-    // let focusVal = focusRef.current.value;
     if (e.key === "Enter") {
-      setIsFocus(()=>true);
-      localStorage.setItem('isfocus',!isFocus);
-      // setFocusInput(() => focus);
       localStorage.setItem("focus", JSON.stringify(focusInput));
-      setEditFocus(()=>false);
-      localStorage.setItem('editfocus',false)
+      localStorage.setItem('checked',false)
+      setIsChecked(()=>false)
+      localStorage.setItem('isfocus',true);
+      setIsFocus(()=>true)
     }
   };
 
   const checkHandler = () => {
     setIsChecked(() => !isChecked);
-    localStorage.setItem("ischecked", !isChecked);
+    localStorage.setItem("ischecked", (!isChecked));
   };
 
   const editFocusHandler=()=>{
-    setEditFocus(()=>true);
-    // setFocusInput(()=>focusRef.current.val);
+    setIsFocus(()=>false);
   }
-  console.log(focusInput,editFocus)
+
+  const removeFocusHandler=()=>{
+    localStorage.removeItem('focus');
+    setFocusInput(()=>"");
+    setIsFocus(()=>false);
+    localStorage.setItem('isfocus',false);
+    localStorage.removeItem('checked')
+    setIsChecked(()=>false)
+    
+   
+  }
 
   return (
     <div className="focus-wrapper">
-      {editFocus===false && isFocus?  (
+      { isFocus===true?  (
         <p className="focus-actions">
           <span>
             <input
               type="checkbox"
-              checked={isChecked}
+              checked={Boolean(isChecked)}
               onChange={checkHandler}
             />
           </span>
-          <span className={isChecked ? `cross-focus` : ``}>{focusInput}</span>
-          <span className="material-icons material-icons-outlined" onClick={editFocusHandler}>edit</span>
-          <span className="material-icons material-icons-outlined remove-focus">remove_circle</span>
+          <span className={isChecked===true? `cross-focus` : ``}>{focusInput}</span>
+          {!isChecked && <span className="material-icons material-icons-outlined" onClick={editFocusHandler}>edit</span>}
+          <span className="material-icons material-icons-outlined remove-focus" onClick={removeFocusHandler}>remove_circle</span>
         </p>
       ) : (
         <p>What are you excited for today?</p>
       )}
-      {editFocus===false && isFocus? (
-        <span>Let's go for it</span>
+      { isFocus===true? (
+        <span>{!isChecked?<span>Let's go for it</span>:<span>Yayy you got one step close</span>}</span>
       ) : (
         <input
           type="text"

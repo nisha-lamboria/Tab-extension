@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 const ShowTime = () => {
   const [time,setTime]=useState("");
-  const [focus,setFocus]=useState("");
   const {userName}=useUserContext();
 
   useEffect(()=>{
@@ -11,6 +10,7 @@ const ShowTime = () => {
     setTimeout(()=>{
       setTime(()=>date.toLocaleTimeString('en-US'));
     },1000)
+    // eslint-disable-next-line
   })
 
   return (
@@ -21,4 +21,4 @@ const ShowTime = () => {
   )
 }
 
-export {ShowTime};
+export {ShowTime}; 
