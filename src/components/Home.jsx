@@ -1,4 +1,4 @@
-import { Quotes } from "./Quotes";
+import {Poems} from "./Poems";
 import { ShowTime } from "./ShowTime";
 import { ShowWeather } from "./ShowWeather";
 import { TodaysFocus } from "./TodaysFocus";
@@ -9,7 +9,7 @@ const Home = () => {
         <ShowWeather/>
         <ShowTime/>
         <TodaysFocus/>
-        <Quotes/>
+        <Poems/>
     </div>
   )
 }
