@@ -6,7 +6,9 @@
   "icons":{
       "128":"butterfly-128.png"
   },
-  
+  "browser_action": {
+      "default_popup": "index.html" 
+  },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
